@@ -1,0 +1,77 @@
+<%- include ('partials/_header') %>
+
+<div class="container tabla-centrada">
+        <div class="col-md-5">
+          <div class="card">
+            <div class="card-body">
+                <form action="/add" method="post">
+                    <div class="form-group">
+                        <input type="text" name="cedula" placeholder="Cedula del propietario" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="nombres" placeholder="Nombre del propietario" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="nombre_mascota" placeholder="Nombre de la mascota" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="correo" placeholder="Correo de contacto" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="ciudad" placeholder="Ciudad" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                     Guardar 
+                    </button>
+                </form>
+            </div>
+          </div>
+        </div>
+    </div> 
+</div>
+</div>
+
+<div class="container tabla-centrada">
+    <div class="row mt-5">
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+                <thead >
+                    <tr>
+                        <th>n°</th>
+                        <th>Cedula del propietaraio</th>
+                        <th>Nombre del propietrio</th>
+                        <th>Nombre de la mascota</th>
+                        <th>Correo de contacto</th>
+                        <th>Ciudad</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (data) { %>
+                    <% for (var i = 0, l = 1; i < data.length; i++) { %>
+                        <tr>
+                            <td><%= (i + l) %></td>
+                            <!-- Otros elementos de la tabla -->
+                            <td><%= data[i].cedula %></td>
+                            <td><%= data[i].nombres %></td>
+                            <td><%= data[i].nombre_mascota %></td>
+                            <td><%= data[i].correo %></td>
+                            <td><%= data[i].ciudad %></td>
+                            <td>
+                                
+                              <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Borrar</a>  
+                              <a href="/update/<%= data[i].id %>" class="btn btn-info">Actualizar</a>  
+                            </td>
+                        </tr>
+                    <% } %>
+                    <% } %>      
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<%- include('partials/_footer') %>
+
+ 
